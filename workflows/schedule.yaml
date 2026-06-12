@@ -1,0 +1,42 @@
+# .github/workflows/sync.yml
+name: JotForm to Google Sheets Sync
+
+on:
+  workflow_dispatch:        # allows manual trigger from Actions tab
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Write Google credentials to file
+        run: echo '${{ secrets.GOOGLE_CREDENTIALS_JSON }}' > credentials.json
+
+      - name: Run sync script
+        env:
+          SPREADSHEET_NAME:        ${{ secrets.SPREADSHEET_NAME }}
+          WORKSHEET_NAME:           ${{ secrets.WORKSHEET_NAME }}
+          GOOGLE_CREDENTIALS_JSON:  ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          JOTFORM_BASE_URL:         ${{ secrets.JOTFORM_BASE_URL }}
+          JOTFORM_FORM_ID:          ${{ secrets.JOTFORM_FORM_ID }}
+          JOTFORM_API_KEY:          ${{ secrets.JOTFORM_API_KEY }}
+          START_DATE:               ${{ secrets.START_DATE }}
+        run: python STNAutomate.py
+
+      - name: Clean up credentials
+        if: always()
+        run: rm -f credentials.json
+ 
