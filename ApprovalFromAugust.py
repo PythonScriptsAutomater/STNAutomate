@@ -8,7 +8,7 @@ from gspread.exceptions import WorksheetNotFound
 from requests.exceptions import ConnectionError as RequestsConnectionError
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
-BASE_URL   = os.environ.get("JOTFORM_BASE_URL", "https://pw.jotform.com/API")
+BASE_URL   = "https://pw.jotform.com/API"
 FORM_ID    = os.environ["JOTFORM_FORM_ID"]
 API_KEY    = os.environ["JOTFORM_API_KEY"]
 START_DATE = os.environ.get("START_DATE", "2024-01-01 00:00:00")
