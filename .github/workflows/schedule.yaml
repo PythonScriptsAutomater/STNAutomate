@@ -30,9 +30,8 @@ jobs:
           SPREADSHEET_NAME:        ${{ secrets.SPREADSHEET_NAME }}
           WORKSHEET_NAME:           ${{ secrets.WORKSHEET_NAME }}
           GOOGLE_CREDENTIALS_JSON:  ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
-          JOTFORM_BASE_URL:         ${{ secrets.JOTFORM_BASE_URL }}
-          JOTFORM_FORM_ID:          ${{ secrets.JOTFORM_FORM_ID }}
-          JOTFORM_API_KEY:          ${{ secrets.JOTFORM_API_KEY }}
+          JOTFORM_FORM_ID:          ${{ secrets.FORM_ID }}
+          JOTFORM_API_KEY:          ${{ secrets.API_KEY }}
           START_DATE:               ${{ secrets.START_DATE }}
         run: python STNAutomate.py
 
