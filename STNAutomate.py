@@ -8,7 +8,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 from gspread.exceptions import WorksheetNotFound
 from requests.exceptions import ConnectionError as RequestsConnectionError
 
-BASE_URL   = os.environ.get("JOTFORM_BASE_URL", "https://pw.jotform.com/API")
+BASE_URL   = "https://pw.jotform.com/API"
 FORM_ID    = os.environ["JOTFORM_FORM_ID"]
 API_KEY    = os.environ["JOTFORM_API_KEY"]
 SPREADSHEET_NAME = os.environ.get("SPREADSHEET_NAME",'STN')     
